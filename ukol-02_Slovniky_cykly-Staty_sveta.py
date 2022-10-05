@@ -1,5 +1,5 @@
 # Vytvoř program, který se uživatele zeptá na region, který ho zajímá. Následně projdi seznam a vypiš všechny státy, které leží v regionu. 
-# Pokud program žádný stát pro daný region nenajde, vypiš text "Neznámý region".
+# Pokud program žádný stát pro daný region nenajde, vypiš text "Neznámý region". = pokud se zeptá na neexistující region ze seznamu.
 
 staty = [
     {'name': 'Afghanistan', 'capital': 'Kabul', 'region': 'Asia', 'subregion': 'Southern Asia', 'population': 27657145,
@@ -490,20 +490,19 @@ staty = [
     {'name': 'Zambia', 'capital': 'Lusaka', 'region': 'Africa', 'subregion': 'Eastern Africa', 'population': 15933883,
      'area': 752612.0, 'gini': 54.6},
     {'name': 'Zimbabwe', 'capital': 'Harare', 'region': 'Africa', 'subregion': 'Eastern Africa', 'population': 14240168,
-     'area': 390757.0},
-    {'name': '', 'capital': 'Harare', 'region': 'Atrapa', 'subregion': 'Eastern Africa', 'population': 14240168,
      'area': 390757.0}
     ]
 
-zemeRegionu = []
+zemeRegionu = []      #seznam slovníků
 regionZajem = input("Jaký region chceš vypsat? ")
 for s in staty:
     if s["region"] == regionZajem:
         zemeRegionu.append(s["name"])
 
-if zemeRegionu == False:
+if zemeRegionu == []:    # když bude seznam prázdný, tzn. když uživatel vloží neexistující region
     print("Neznámý region")
-print(zemeRegionu)
+else: 
+    print(zemeRegionu)
 
 # Bonus:
 """Vytvoř program, který se uživatele zeptá na region, který ho zajímá. Následně sestav slovník, který bude obsahovat celkové počty obyvatel 
@@ -511,17 +510,24 @@ print(zemeRegionu)
 
    {'Northern Europe': 104628222, 'Southern Europe': 152182570, 'Western Europe': 194539965, 'Eastern Europe': 295337425}
 """
+
 # počet obyvatel regionu:
 sumPocetObyv = 0    
 for s in staty:
     if s["region"] == regionZajem:
-        #print(i["population"])
         sumPocetObyv += s["population"]
-print(f"Počet obyvatel regionu je {sumPocetObyv}")
+print(f"Počet obyvatel regionu {regionZajem} je {sumPocetObyv}.")
 
 # počet obyvatel subregionu
-subregionSlovnik = []
-sumPocetObyv = 0    
+subregionSlovnik = {}    # slovnik = výsledkem je jeden řádek a tím je součet populace
+#sumPocetObyv = 0    
 for s in staty:
     if s["region"] == regionZajem:
-        subregionSlovnik["subregion"]=s["population"]
+        subregion = s["subregion"]       # obdoba cenaZaNoc = 150, jen zde to není konstanta, ale vyberu to z toho seznamu pro daný vybraný region.
+        pupulation = s["population"]
+        if subregion in subregionSlovnik:
+            subregionSlovnik[subregion]+=s["population"]     # pro navýšení hodnoty, kerá ve slovníku už je z předchozího kola cyklu for. Tzn. přičte k sumě předchozích států populaci dalšího státu.
+        else: 
+            subregionSlovnik[subregion]=s["population"]    # pro první hodnotu do prázdného slovníku
+print(f"Počet obyvatel subregionů je {subregionSlovnik[subregion]}.")
+        
