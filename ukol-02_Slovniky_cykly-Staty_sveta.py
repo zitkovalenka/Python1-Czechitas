@@ -491,41 +491,19 @@ staty = [
      'area': 752612.0, 'gini': 54.6},
     {'name': 'Zimbabwe', 'capital': 'Harare', 'region': 'Africa', 'subregion': 'Eastern Africa', 'population': 14240168,
      'area': 390757.0},
-     {'name': '', 'capital': 'Harare', 'region': 'Atrapa', 'subregion': 'Eastern Africa', 'population': 14240168,
+    {'name': '', 'capital': 'Harare', 'region': 'Atrapa', 'subregion': 'Eastern Africa', 'population': 14240168,
      'area': 390757.0}
     ]
 
+zemeRegionu = []
 regionZajem = input("Jaký region chceš vypsat? ")
-for i in staty:
-    if i["region"] == regionZajem:
-        #print(i["name"])
-        print(i.get("name","Neznámý region."))
-    elif  i["region"] == regionZajem and i["name"] == "" :
-        #print("Neznámý region.")
-        print(i.get("","Neznámý region."))
-   
-# počet obyvatel regionu:
-sumPocetObyv = 0    
-for i in staty:
-    if i["region"] == regionZajem:
-        #print(i["population"])
-        sumPocetObyv += i["population"]
-print(f"Počet obyvatel regionu je {sumPocetObyv}")
+for s in staty:
+    if s["region"] == regionZajem:
+        zemeRegionu.append(s["name"])
 
-# počet obyvatel subregionu
-"""sumPocetObyv = 0    
-for i in staty:
-    if i["region"] == regionZajem:"""
-        
-
-"""sum_pages = 0
-sum_books_8 = 0
-for kniha in books:
-    #print(kniha["pages"])
-    sum_pages += kniha["pages"]
-    if kniha["rating"] >= 8:
-        sum_books_8 += 1
-print(f"Počet přečtených stránek je {sum_pages}")"""
+if zemeRegionu == False:
+    print("Neznámý region")
+print(zemeRegionu)
 
 # Bonus:
 """Vytvoř program, který se uživatele zeptá na region, který ho zajímá. Následně sestav slovník, který bude obsahovat celkové počty obyvatel 
@@ -533,3 +511,17 @@ print(f"Počet přečtených stránek je {sum_pages}")"""
 
    {'Northern Europe': 104628222, 'Southern Europe': 152182570, 'Western Europe': 194539965, 'Eastern Europe': 295337425}
 """
+# počet obyvatel regionu:
+sumPocetObyv = 0    
+for s in staty:
+    if s["region"] == regionZajem:
+        #print(i["population"])
+        sumPocetObyv += s["population"]
+print(f"Počet obyvatel regionu je {sumPocetObyv}")
+
+# počet obyvatel subregionu
+subregionSlovnik = []
+sumPocetObyv = 0    
+for s in staty:
+    if s["region"] == regionZajem:
+        subregionSlovnik["subregion"]=s["population"]
