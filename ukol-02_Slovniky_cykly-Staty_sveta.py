@@ -493,7 +493,7 @@ staty = [
      'area': 390757.0}
     ]
 
-zemeRegionu = []      #seznam slovníků
+zemeRegionu = []      # vytvářím prázdný seznam slovníků
 regionZajem = input("Jaký region chceš vypsat? ")
 for s in staty:
     if s["region"] == regionZajem:
@@ -519,7 +519,7 @@ for s in staty:
 print(f"Počet obyvatel regionu {regionZajem} je {sumPocetObyv}.")
 
 # počet obyvatel subregionu
-subregionSlovnik = {}    # slovnik = výsledkem je jeden řádek a tím je součet populace
+subregionSlovnik = {}    # vytvářím prázdný slovnik = výsledkem je jeden řádek a tím je součet populace
 #sumPocetObyv = 0    
 for s in staty:
     if s["region"] == regionZajem:
@@ -529,5 +529,6 @@ for s in staty:
             subregionSlovnik[subregion]+=s["population"]     # pro navýšení hodnoty, kerá ve slovníku už je z předchozího kola cyklu for. Tzn. přičte k sumě předchozích států populaci dalšího státu.
         else: 
             subregionSlovnik[subregion]=s["population"]    # pro první hodnotu do prázdného slovníku
-print(f"Počet obyvatel subregionů je {subregionSlovnik[subregion]}.")
+# print(f"Počet obyvatel subregionů je {subregionSlovnik[subregion]}.")   # tento zápis je špatně, vyprintí jen první subregion a vypočte počet obyvatel. 
+print(f"Počet obyvatel subregionů je {subregionSlovnik}.")   # tento zápis je správně, vyprintí všechny subregiony a součet obyvatel včetně názvu subregionu. Chci vyprintit celý slovník.
         
