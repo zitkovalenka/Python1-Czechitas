@@ -1,5 +1,4 @@
 class Nemoc:
-    # poradi argumentu v radku nize si klidne preskladejte
     def __init__(self, jmeno, inkubacni_doba, pocet_obeti, sireni):
         self.jmeno = jmeno
         self.inkubacni_doba = inkubacni_doba
@@ -19,24 +18,18 @@ class Koronavirus(Nemoc):
         super().__init__(jmeno, 12, 0, "vzduchem")
         self.varianty = []
 
-    """def pridej_variantu(self,varianta):
-        for varianta in self.varianty:
-            self.pridej_variantu.append(varianta)
-        return self.pridej_variantu()"""
-
     def pridej_variantu(self,varianta):
         self.varianty.append(varianta)
 
-    def zmen_pocet_obeti(pocet_obeti):                  # jak mám převzít metodu zmen_pocet_obeti? umíme jen __str__ přebrat a zároveň změnit a nebo přebrat atributy, ne metodu.
-        super().zmen_pocet_obeti(pocet_obeti)
-        
+# V zádání bylo, že mám převzít metodu zmen_pocet_obeti ze třídy Nemoc? Nemusím dělat nic, vůbec nevpisuji níže uvedenou definici metody/funkce.
+# Pokud správně dědím z třídy Nemoc, tak se toto samo dědí/převezme.
+# Naopak, když jsem vložila níže uvedenou část, tak při volání funkce/změně počtu obětí mi to pak házelo chybu, že mám 2 atributy na místo jednoho.
+    """def zmen_pocet_obeti(pocet_obeti):                  
+        super().zmen_pocet_obeti(pocet_obeti)"""
+
     def __str__(self):
-        seznam = ['a', 'b', 'c']
-        ' ,'.join(seznam)
-        # print(seznam)
-        # return f"{super().__str__()} " + " {self.varianty}"
-        # return f"{super().__str__()} + {self.varianty}"
-        return super().__str__() + f" (varianty: {self.varianty})"
+        # return super().__str__() + f" (varianty: {self.varianty})"     # vypíše se celý seznam/list v hranatých závorkách, což je sice ok, ale chceme to vypsat jinak
+        return super().__str__() + f" (varianty: {', '.join(self.varianty)})"
 
 corona = Koronavirus("Coronavirus")
 # corona = Koronavirus("Coronavirus", 0, "vzduchem")
@@ -53,3 +46,5 @@ print(corona)
 corona.pridej_variantu('alpha')
 print(corona)
 
+corona.zmen_pocet_obeti(5)
+print(corona.pocet_obeti)
