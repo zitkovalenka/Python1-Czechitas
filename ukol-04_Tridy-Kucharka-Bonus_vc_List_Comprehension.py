@@ -45,11 +45,13 @@ class Kucharka:
     def pridej_recept(self, novy_recept):
         self.recepty.append(novy_recept)
 
+# list comprehension
     def vyzkousene_recepty(self):
-        vyzkousene_recepty = []
-        print([vyzkousene_recepty.append(recept) if recept.vyzkouseno == True for recept in self.recepty])    
-        # return míst print" 
-"""
+        vyzkousene_recepty = []      
+        return([vyzkousene_recepty.append(recept) for recept in self.recepty if recept.vyzkouseno == True])       
+        # správné pořadí: [y for y in a if y not in b]
+       
+""" standardní řešení bez list comprehension
     def vyzkousene_recepty(self):
         vyzkousene_recepty = []
         for recept in self.recepty:  
