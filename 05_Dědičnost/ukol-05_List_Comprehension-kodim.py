@@ -13,6 +13,7 @@ print([nasobeni*-1 for nasobeni in cisla])
 
 # každé z čísel ze seznamu cisla umocněné na druhou:
 print([cislo*cislo for cislo in cisla])
+print([cislo**2 for cislo in cisla])
 
 # každé z čísel ze seznamu cisla jako řetězec.
 print([str(cislo) for cislo in cisla])   #asi toto má být výsledek. Těžko říct
