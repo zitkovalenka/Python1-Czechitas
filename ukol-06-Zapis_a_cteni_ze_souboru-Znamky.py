@@ -3,8 +3,6 @@ with open("ukol-06-znamky_za_semestr.txt","r", encoding="utf-8") as vstup:
     prvni_radek = vstup.readline()
     radky = vstup.readlines()
 
-radek = [radek.split() for radek in radky]    
-
 if radky != prvni_radek:
     znamky_replace = [radek.replace("1","A").replace("2","B").replace("3","C").replace("4","D").replace("5","F") for radek in radky]
 
